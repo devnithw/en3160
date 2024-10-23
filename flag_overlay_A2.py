@@ -3,10 +3,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load the images
-building_img_path = 'a2images/005.jpg'
-flag_img_path = 'a2images/flag.png'
+building_img_path = 'a2images/billboard.png'
+flag_img_path = 'a2images/starwars.jpg'
 
 building_img = cv2.imread(building_img_path)
+building_copy = building_img.copy()
 flag_img = cv2.imread(flag_img_path)
 
 # Resize flag to match size with the building (optional, if flag needs resizing)
@@ -23,11 +24,11 @@ def select_points(event, x, y, flags, param):
         print(f"Point selected: {x}, {y}")
         
         # Display the points on the image for feedback
-        cv2.circle(building_img, (x, y), 5, (0, 255, 0), -1)
-        cv2.imshow("Select 4 points", building_img)
+        cv2.circle(building_copy, (x, y), 5, (0, 255, 0), -1)
+        cv2.imshow("Select 4 points", building_copy)
 
 # Show the building image and set the mouse callback
-cv2.imshow("Select 4 points", building_img)
+cv2.imshow("Select 4 points", building_copy)
 cv2.setMouseCallback("Select 4 points", select_points)
 
 # Wait until 4 points are selected
